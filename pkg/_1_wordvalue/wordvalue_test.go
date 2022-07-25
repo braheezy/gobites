@@ -1,4 +1,4 @@
-package main
+package _1_wordvalue
 
 import (
 	"testing"
@@ -26,7 +26,7 @@ func TestCalcWordValue(t *testing.T) {
 
 func TestMaxWordValue(t *testing.T) {
 	var words []string
-	for word, _ := range TestWords {
+	for word := range TestWords {
 		words = append(words, word)
 	}
 
