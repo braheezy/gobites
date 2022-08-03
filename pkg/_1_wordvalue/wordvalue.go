@@ -1,22 +1,5 @@
 package _1_wordvalue
 
-import (
-	"os"
-	"strings"
-)
-
-func LoadWords() (words []string, err error) {
-	// Load dictionary into a list and return list
-	file, err := os.ReadFile(DictionaryFile)
-	if err != nil {
-		panic(err)
-	}
-
-	words = strings.Fields(string(file))
-
-	return words, nil
-}
-
 func CalcWordValue(word string) (score int) {
 	Scores := LetterScores()
 	// Calculate the value of the word entered into function using imported constant mapping LetterScores
@@ -26,14 +9,16 @@ func CalcWordValue(word string) (score int) {
 	return score
 }
 
-func MaxWordValue(words []string) (bestWord string) {
-	// Calculate the word with the max value, receive a list of words as arg
-	maxScore := 0
+// Given a list of words, return list of bestWords and the bestScore
+func MaxWordsValue(words []string) (bestWords []string, bestScore int) {
+
 	for _, word := range words {
-		if currScore := CalcWordValue(word); currScore > maxScore {
-			bestWord = word
-			maxScore = currScore
+		if currentScore := CalcWordValue(word); currentScore > bestScore {
+			bestWords = []string{word}
+			bestScore = currentScore
+		} else if currentScore == bestScore {
+			bestWords = append(bestWords, word)
 		}
 	}
-	return bestWord
+	return bestWords, bestScore
 }

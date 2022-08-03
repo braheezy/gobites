@@ -2,38 +2,40 @@ package _1_wordvalue
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
-var TestWords = map[string]int{"bob": 7, "julian": 13, "PyBites": 14, "quit": 13, "barbeque": 21, "benzalphenylhydrazone": 56}
+var TestWords = map[string]int{"bob": 7, "julian": 13, "quit": 13, "quits": 14, "quite": 14}
 
 func TestLoadWords(t *testing.T) {
-	words, err := LoadWords()
-	expected := 235886
+	words, _ := LoadWords()
+
+	expected := 178695
 	actual := len(words)
-	if actual != expected || err != nil {
-		t.Fatalf(`Got: %v. Expected: %v.`, actual, expected)
-	}
+
+	require.Equal(t, actual, expected)
 }
 
 func TestCalcWordValue(t *testing.T) {
 	for word, expected_score := range TestWords {
 		actual_score := CalcWordValue(word)
-		if actual_score != expected_score {
-			t.Fatalf(`Case: %s. Got: %v. Expected: %v.`, word, actual_score, expected_score)
-		}
+
+		require.Equal(t, actual_score, expected_score)
 	}
 }
 
-func TestMaxWordValue(t *testing.T) {
+func TestMaxWordsValue(t *testing.T) {
 	var words []string
 	for word := range TestWords {
 		words = append(words, word)
 	}
 
-	actual := MaxWordValue(words)
-	expected := "benzalphenylhydrazone"
-	if actual != expected {
-		t.Fatalf(`Got: %v. Expected: %v.`, actual, expected)
-	}
+	actualMaxWords, actualMaxScore := MaxWordsValue(words)
+	expectedMaxWords := []string{"quits", "quite"}
+	expectedMaxScore := 14
+
+	require.Equal(t, actualMaxScore, expectedMaxScore)
+	require.ElementsMatch(t, actualMaxWords, expectedMaxWords)
 
 }
