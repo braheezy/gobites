@@ -75,6 +75,8 @@ func Pouch() func(int) ([]rune, int) {
 	}
 }
 
+// TODO: This is to support a friendlier game. Can't make a word
+// if the drawn letters don't have a vowel.
 func HasVowels(word string) bool {
 	for _, vowel := range Vowels {
 		for _, c := range word {
