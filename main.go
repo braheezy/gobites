@@ -6,6 +6,7 @@ import (
 
 	"github.com/braheezy/gobites/pkg/_2_scrabble"
 	"github.com/braheezy/gobites/pkg/_3_tag_analysis"
+	"github.com/braheezy/gobites/pkg/_4_twitter"
 )
 
 func main() {
@@ -20,6 +21,8 @@ func main() {
 		_2_scrabble.PlayScrabble()
 	case "tags":
 		_3_tag_analysis.Run()
+	case "twitter":
+		_4_twitter.Run()
 	default:
 		fmt.Println("Unknown command.")
 	}

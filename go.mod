@@ -8,10 +8,14 @@ replace github.com/braheezy/gobites/pkg/_2_scrabble => ./pkg/_2_scrabble
 
 replace github.com/braheezy/gobites/pkg/_3_tag_analysis => ./pkg/_3_tag_analysis
 
+replace github.com/braheezy/gobites/pkg/_4_twitter => ./pkg/_4_twitter
+
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/g8rswimmer/go-twitter/v2 v2.1.2 // indirect
+	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/mmcdole/gofeed v1.1.3 // indirect
 	github.com/mmcdole/goxpp v0.0.0-20181012175147-0068e33feabf // indirect
